@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>homework_6.3</title>
+        <style>
+            canvas{ border: 0px solid black; }
+        </style>
+    </head>
+    <body>
+        <canvas width="400" height="400" id="canvas">
+        
+            <script>
+                let canvas = document.getElementById("canvas");
+                let context = canvas.getContext("2d");
+                 context.fillStyle = "#f78c58";
+                 context.fillRect(0, 0, canvas.width, canvas.height);
+                 context.fillStyle = "black";
+                 
+                 drawShape();
+                 drawC();
+                for(let x = 0; x<100; x+=10){
+                   drawUIN(150,x*2); 
+                }
+//                  drawUIN(10,50);
+                
+                 function drawC(){
+                     context.lineCap = "round";
+                     context.strokeStyle = "white";
+                     context.moveTo(10,10);
+                     context.lineTo(100, 10);
+                     context.lineTo(100,30);
+                     context.lineTo(30,30);
+                     context.lineTo(30,100);
+                     context.lineTo(100,100);
+                     context.lineTo(100,120);
+                     context.lineTo(10,120);
+                     context.lineTo(10,10);
+                     context.stroke();
+                     
+                 }
+              
+              
+                 function drawUIN(x, y){
+                     context.fillStyle = "black";
+                     context.font = "30px Helvetica";
+                     context.fillText("677061673", x, y);
+                 }
+                
+                 function drawShape(){
+                    context.fillStyle = "#58c7f7";
+                    context.moveTo(50,300);
+                    context.lineTo(100, 350);
+                    context.lineTo(50, 350);
+                    context.fill();
+                 }
+                
+                
+            </script>
+        </canvas>
+    </body>
+</html>
