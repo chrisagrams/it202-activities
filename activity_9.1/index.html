@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <style>
+    
+  <head>
+      <link rel="stylesheet" href="bundle.css">
+      <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+      <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <style>
+         :root{
+       --mdc-theme-primary: #000000;
+        }
+        
         @use "@material/top-app-bar/mdc-top-app-bar";
         @use "@material/icon-button/mdc-icon-button";
         .mdc-top-app-bar {     
             top: 0px;
             left: 0px;
         }
+
     </style>
-  <head>
-      <link rel="stylesheet" href="bundle.css">
-      <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
-      <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  </head>
+    </head>
+   
   <body>
  
       
@@ -32,7 +39,7 @@
         </header>
       
       <main class="mdc-top-app-bar--fixed-adjust">
-         <button class="mdc-button--raised foo-button">
+         <button class="mdc-button mdc-button--raised foo-button">
           <div class="mdc-button__ripple"></div>
           <span class="mdc-button__label">Button</span>
           </button> 
