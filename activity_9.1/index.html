@@ -3,6 +3,10 @@
     <style>
         @use "@material/top-app-bar/mdc-top-app-bar";
         @use "@material/icon-button/mdc-icon-button";
+        .mdc-top-app-bar {     
+            top: 0px;
+            left: 0px;
+        }
     </style>
   <head>
       <link rel="stylesheet" href="bundle.css">
@@ -11,6 +15,8 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
+ 
+      
         <header class="mdc-top-app-bar">
             <div class="mdc-top-app-bar__row">
             <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
@@ -25,10 +31,13 @@
             </div>
         </header>
       
-      <button class="mdc-button foo-button">
-      <div class="mdc-button__ripple"></div>
-      <span class="mdc-button__label">Button</span>
-      </button>
+      <main class="mdc-top-app-bar--fixed-adjust">
+         <button class="mdc-button--raised foo-button">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">Button</span>
+          </button> 
+      </main>
+      
       <script>
           mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
           import {MDCTopAppBar} from '@material/top-app-bar';
