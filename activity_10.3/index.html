@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart1);
+      google.charts.setOnLoadCallback(drawChart2);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart2() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Thing Done');
+        data.addColumn('number', 'Hours');
+        data.addRows([
+          ['Sleep', 10],
+          ['School', 4],
+          ['Video Games', 2],
+          ['YouTube', 2],
+          ['Hobbies', 2],
+          ['Wasted', 4]  
+        ]);
+
+        // Set chart options
+        var options = {'title':'How I Spend My Time During The Quarantine',
+                       'width':400,
+                       'is3D':true,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart2_div'));
+        chart.draw(data, options);
+      }
+        
+        function drawChart1() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Thing Done');
+        data.addColumn('number', 'Hours');
+        data.addRows([
+          ['Sleep', 6],
+          ['Classes', 8],
+          ['Homework', 3],
+          ['Eating/Getting Ready', 2],
+          ['Work', 2],
+          ['Working Out', 2],
+          ['Free Time', 1]  
+        ]);
+
+        // Set chart options
+        var options = {'title':'How I Used To Spend My Day',
+                       'width':400,
+                       'is3D':true,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart1_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+
+   <body>
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+      <tr>
+        <td><div id="chart1_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="chart2_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+  </body>
+</html>
