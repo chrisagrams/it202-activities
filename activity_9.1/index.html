@@ -2,7 +2,6 @@
 <html>
     
   <head>
-      <link rel="stylesheet" href="bundle.css">
       <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
       <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
       <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -22,7 +21,24 @@
     </head>
    
   <body>
- 
+     <aside class="mdc-drawer mdc-drawer--modal">
+        <div class="mdc-drawer__content">
+          <nav class="mdc-list">
+        <a class="mdc-list-item mdc-list-item--activated" href="#home" aria-current="page">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">home</i>
+          <span class="mdc-list-item__text">Home</span>
+        </a>
+        <a class="mdc-list-item" href="#data">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">pets</i>
+          <span class="mdc-list-item__text">Data</span>
+        </a>
+        <a class="mdc-list-item" href="#about">
+          <i class="material-icons mdc-list-item__graphic" aria-hidden="true">info</i>
+          <span class="mdc-list-item__text">About</span>
+        </a>
+      </nav>
+        </div>
+     </aside>
       
         <header class="mdc-top-app-bar">
             <div class="mdc-top-app-bar__row">
@@ -46,11 +62,13 @@
       </main>
       
       <script>
-          mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
-          import {MDCTopAppBar} from '@material/top-app-bar';
-          // Instantiation
-          const topAppBarElement = document.querySelector('.mdc-top-app-bar');
-          const topAppBar = new MDCTopAppBar(topAppBarElement);
+        mdc.ripple.MDCRipple.attachTo(document.querySelector('.foo-button'));
+        mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('header.mdc-top-app-bar'));
+        const drawer = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+  
+          document.querySelector(".mdc-top-app-bar__navigation-icon").addEventListener("click", (event) => {
+              drawer.open=true;
+          });
       </script>
     </body>
 </html>
