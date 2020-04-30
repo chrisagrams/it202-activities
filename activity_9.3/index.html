@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    
+  <head>
+     
+      <link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+      <script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <style>
+         :root{
+       --mdc-theme-primary: #000000;
+        }
+        
+        @use "@material/top-app-bar/mdc-top-app-bar";
+        @use "@material/icon-button/mdc-icon-button";
+        .mdc-top-app-bar {     
+            top: 0px;
+            left: 0px;
+        }
+
+    </style>
+    </head>
+   
+  <body>
+ 
+      
+        
+         <button id="GRAF" class="mdc-button mdc-button--raised foo-button">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">GRAF</span>
+          </button> 
+          <button id="SFD" class="mdc-button mdc-button--raised foo-button">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">SFD</span>
+          </button> 
+          <button id="CSF" class="mdc-button mdc-button--raised foo-button">
+          <div class="mdc-button__ripple"></div>
+          <span class="mdc-button__label">CSF</span>
+          </button>
+         
+          <div id="DATA">
+              <ul class="mdc-list mdc-list--two-line mdc-list--avatar-list">
+                  
+              </ul>
+   
+          </div>
+      
+      
+      <script>
+         
+          let url = "https://data.cityofchicago.org/resource/v6vf-nfxy.json";
+          
+          let buttons = document.querySelectorAll("button.mdc-button");
+          for(let i = 0; i<buttons.length; i++){
+              buttons[i].addEventListener("click", (e) =>{
+                  console.log("Button " + i + " clicked.");
+                  let ul = document.querySelector("ul");
+                  while(ul.firstChild){
+                      ul.removeChild(ul.firstChild);
+                  }
+                  let id= buttons[i].getAttribute("id");
+                  let tempURL = url+"?sr_short_code=" + id +"&$LIMIT=5";
+                  fetch(tempURL)
+                  .then((response) => {
+                      return response.json();
+                  })  
+                  .then ((json)=>{
+                      console.log(json);
+                      for(let j = 0; j<json.length; j++){
+                          let li = document.createElement("li");
+                          li.className = "mdc-list-item";
+                          let icon = document.createElement("span");
+                          icon.className = "mdc-list-item__graphic material-icons";
+                          if(id == "GRAF")
+                              icon.textContent="format_paint";
+                          else if(id == "SFD")
+                              icon.textContent="highlight";
+                          else if(id == "CSF")
+                              icon.textContent="remove_red_eye";
+                          let text = document.createElement("span");
+                          text.className = "mdc-list-item__text";
+                          let primaryText = document.createElement("span");
+                          primaryText.className = "mdc-list-item__primary-text";
+                          primaryText.textContent = json[j].street_address;
+                          let secondText = document.createElement("span");
+                          secondText.className = "mdc-list-item__secondary-text";
+                          secondText.textContent = json[j].zip_code;
+                          
+                          text.appendChild(primaryText);
+                          text.appendChild(secondText);
+                          li.appendChild(icon);
+                          li.appendChild(text);
+                          
+                          ul.appendChild(li);
+                      }
+                  })
+              })
+          }
+          
+      </script>
+    </body>
+</html>
